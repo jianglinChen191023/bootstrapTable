@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="lib/css/bootstrap-table.css">
+
+  <title>标题</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<table id="table"></table>
+
+<script src="lib/js/jquery.min.js"></script>
+<script src="lib/js/popper.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/js/bootstrap-table.min.js"></script>
+<script src="lib/js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $('#table').bootstrapTable({
+      // table-dark
+      classes: 'table table-bordered table-hover table-striped ',
+      locale: 'zh-CN',
+      // 排序名称顺序
+      // 使用sortName: 'name' 和 sortOrder: 'desc'选项定义要排序的列和顺序。
+      sortName: 'id',
+      sortOrder: 'dsc',
+      // 表列配置对象
+      columns: [
+        {
+          field: 'id',
+          title: 'Item ID'
+        }, {
+          field: 'name',
+          title: 'Item Name'
+        }, {
+          field: 'price',
+          title: 'Item Price'
+        }],
+      // 要加载的数据。
+      data: [
+        {
+          id: 1,
+          name: 'Item 1',
+          price: '$1'
+        }, {
+          id: 2,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 3,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 4,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 5,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 6,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 7,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 8,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 9,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 10,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 11,
+          name: 'Item 3',
+          price: '$2'
+        }],
+      // 一个从远程站点请求数据的URL。
+      // url: 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data',
+      // 在加载远程数据时发生某些错误时触发
+      onLoadError: function (status, jqXHR) {
+
+      },
+      // 请求缓存
+      cache: false,
+      // 您期望从服务器返回的数据类型。 默认 json
+      dataType: 'json',
+      // ajax: function () {
+      //
+      // },
+      // 请求远程数据时，可以通过修改queryParams发送其他参数。
+      // queryParams: function () {
+      //
+      // },
+      // 设置'limit'为发送具有RESTFul类型的查询参数。
+      // 默认 limit
+      // limit queryParams: {"search":"","order":"asc","offset":0,"limit":10}
+      // '' queryParams: {"searchText":"","sortOrder":"asc","pageSize":10,"pageNumber":1}
+      queryParamsType: 'limit',
+      /*-------------------- 分页 --------------------*/
+      // 设置true 为在表格底部显示分页工具栏。
+      pagination: true,
+      // 分页连续循环模式
+      paginationLoop: true,
+      // sidePagination: 'server',
+      // 计算并显示中间页面以便快速访问。
+      paginationUseIntermediate: true,
+      /*--------------------
+       启用搜索输入。
+       有3种搜索方式：
+          1. 该值包含搜索查询（默认）。示例：Github包含git。
+          2. 该值必须与搜索查询相同。示例：Github（值）和Github（搜索查询）。
+          3. 比较（<, >, <=, =<, >=, =>）。示例：4大于3。
+       --------------------*/
+      search: true,
+      // 搜索方法将一直执行到按下Enter键。
+      searchOnEnterKey: false,
+      //设置true 为在搜索输入后面显示搜索按钮。仅在按下按钮时才会执行搜索（例如，以防止交通或加载时间）。
+      showSearchButton: true,
+      // 设置true为在搜索输入后面显示一个清除按钮，该按钮将清除搜索输入（还包括来自过滤器控件的所有过滤器（如果启用））。
+      showSearchClearButton: true,
+      // 设置true 为修剪搜索字段中的空格。
+      trimOnSearch: true,
+      // 所有按钮都将在其上显示图标
+      showButtonIcons: true,
+      // 所有按钮都将在其上显示文本
+      showButtonText: false,
+
+      /*-------------------- 下拉列表 --------------------*/
+      // 设置true 为显示列下拉列表。我们可以将 switchable选项设置false为隐藏下拉列表中项目。
+      showColumns: true,
+
+      /*-------------------- 部件 --------------------*/
+      // 设置true 为显示【分页开关按钮】。
+      showPaginationSwitch: true,
+      // 设置true为显示【刷新按钮】。
+      showRefresh: true,
+      // 设置true显示【切换按钮】以切换表格/卡片视图。
+      // showToggle: true,
+      // 设置true显示【全屏按钮】。
+      showFullscreen: true,
+
+      // 设置true 为允许复选框仅选择一行。
+      singleSelect: true,
+      // 设置false为隐藏标题行中的所有复选框。
+      checkboxHeader: true,
+    })
+  })
+
+</script>
+</body>
+</html>

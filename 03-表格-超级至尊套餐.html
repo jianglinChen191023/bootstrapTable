@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="lib/css/bootstrap-table.css">
+
+  <title>标题</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<table id="table"></table>
+
+<script src="lib/js/jquery.min.js"></script>
+<script src="lib/js/popper.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/js/bootstrap-table.min.js"></script>
+<script src="lib/js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $('#table').bootstrapTable({
+      // 表的各项(Table options )
+      // height: 200,
+      classes: 'table table-bordered table-hover table-striped table-dark',
+      theadClasses: 'undefined', // undefined thead-light thead-dark
+      locale: 'zh-CN',
+      // 排序名称顺序
+      // 使用sortName: 'name' 和 sortOrder: 'desc'选项定义要排序的列和顺序。
+      sortName: 'id',
+      sortOrder: 'dsc',
+      // 表列配置对象
+      columns: [
+        {
+          field: 'id',
+          title: 'Item ID'
+        }, {
+          field: 'name',
+          title: 'Item Name'
+        }, {
+          field: 'price',
+          title: 'Item Price'
+        }],
+      // 要加载的数据。
+      data: [
+        {
+          id: 1,
+          name: 'Item 1',
+          price: '$1'
+        }, {
+          id: 2,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 3,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 4,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 5,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 6,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 7,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 8,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 9,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 10,
+          name: 'Item 2',
+          price: '$2'
+        }, {
+          id: 11,
+          name: 'Item 3',
+          price: '$2'
+        }],
+      // 一个从远程站点请求数据的URL。
+      // url: 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data',
+      // 在加载远程数据时发生某些错误时触发
+      onLoadError: function (status, jqXHR) {
+
+      },
+      // 请求远程数据的方法类型。 默认 get
+      method: 'get',
+      // 请求缓存
+      cache: false,
+      // 您期望从服务器返回的数据类型。 默认 json
+      dataType: 'json',
+      // ajax: function () {
+      //
+      // },
+      // 请求远程数据时，可以通过修改queryParams发送其他参数。
+      // queryParams: function () {
+      //
+      // },
+      // 设置'limit'为发送具有RESTFul类型的查询参数。
+      // 默认 limit
+      // limit queryParams: {"search":"","order":"asc","offset":0,"limit":10}
+      // '' queryParams: {"searchText":"","sortOrder":"asc","pageSize":10,"pageNumber":1}
+      queryParamsType: 'limit',
+
+      // 在加载远程数据之前，处理响应数据格式
+      responseHandler: function (res, jqXHR) {
+        return res
+      },
+
+      // 键入包含'total'数据的传入json 。
+      // 默认 total
+      totalField: 'total',
+      // json响应中的字段，将用于 showExtendedPagination.
+      totalNotFilteredField: 'totalNotFiltered',
+
+      // 键入包含'rows'数据列表的传入json
+      // 默认 rows
+      dataField: 'rows',
+      /*-------------------- 分页 --------------------*/
+      // 设置true 为在表格底部显示分页工具栏。
+      pagination: true,
+      // 设置true为仅显示表中显示的数据量。它需要将分页表选项设置为true。
+      onlyInfoPagination: false,
+      // 设置true 为显示分页的扩展版本（包括不带过滤器的所有行的计数）。如果在服务器端使用分页，请使用totalNotFilteredField来定义计数。
+      showExtendedPagination: false,
+      // 分页连续循环模式
+      paginationLoop: true,
+      // 定义表格的侧面分页，只能是'client' 或 'server'。使用 'server'side需要设置'url' 或 'ajax' 选项。
+      // sidePagination: 'server',
+      // 此属性主要由分页服务器传入，该服务器易于使用。
+      totalRows: 0,
+      // 此属性主要由分页服务器传入，该服务器易于使用。
+      totalNotFiltered: 0,
+      // 设置分页属性时，请初始化页码。
+      pageNumber: 1,
+      // 设置分页属性时，初始化页面大小。
+      pageSize: 10,
+      // 设置分页属性时，初始化页面尺寸选择列表。如果包含'all' 或 'unlimited' 选项，则所有记录将显示在表中。
+      pageList: [10, 25, 50, 100],
+      // 指示如何对齐分页。'left', 'right' 可以使用。
+      paginationHAlign: 'right',
+      // 指示如何垂直对齐分页。'top', 'bottom', 'both'（穿上顶部和底部的分页）都可以使用。
+      paginationVAlign: 'bottom',
+      // 指示如何对齐分页细节 'left', 'right' 可以使用。
+      paginationDetailHAlign: 'left',
+      // 指示要在分页详细信息中显示的图标或文本，即上一个按钮。
+      paginationPreText: '‹',
+      // 指示要在分页详细信息（下一步按钮）中显示的图标或文本。
+      paginationNextText: '›',
+      // 连续的最大连续页数。
+      paginationSuccessivelySize: 5,
+      // 当前页面每侧（右侧，左侧）的页数。
+      paginationPagesBySide: 1,
+      // 计算并显示中间页面以便快速访问。
+      paginationUseIntermediate: true,
+      /*--------------------
+       启用搜索输入。
+       有3种搜索方式：
+          1. 该值包含搜索查询（默认）。示例：Github包含git。
+          2. 该值必须与搜索查询相同。示例：Github（值）和Github（搜索查询）。
+          3. 比较（<, >, <=, =<, >=, =>）。示例：4大于3。
+       --------------------*/
+      search: true,
+      // 搜索方法将一直执行到按下Enter键。
+      searchOnEnterKey: false,
+      // 启用严格搜索。禁用比较检查。
+      strictSearch: false,
+      // 设置true 为仅在可见列/数据中搜索，如果数据包含其他未显示的值，则在搜索时将忽略它们。
+      visibleSearch: false,
+      // 所有按钮都将在其上显示图标
+      showButtonIcons: true,
+      // 所有按钮都将在其上显示文本
+      showButtonText: false,
+      //设置true 为在搜索输入后面显示搜索按钮。仅在按下按钮时才会执行搜索（例如，以防止交通或加载时间）。
+      showSearchButton: true,
+      // 设置true为在搜索输入后面显示一个清除按钮，该按钮将清除搜索输入（还包括来自过滤器控件的所有过滤器（如果启用））。
+      showSearchClearButton: true,
+      // 设置true 为修剪搜索字段中的空格。
+      trimOnSearch: true,
+      // 指示如何对齐搜索输入。'left', 'right' 可以使用。
+      searchAlign: 'right',
+      // 设置搜索触发超时。
+      searchTimeOut: 500,
+      // 设置搜索属性后，初始化搜索文本。
+      searchText: '',
+      /*
+      执行自定义搜索功能而不是内置搜索功能，它采用三个参数：
+      data: 表格数据。
+      text: 搜索文字。
+      filter: filterBy 方法中的过滤器对象。
+      用法示例：
+      function customSearch(data,text){
+        return data.filter(function(row){
+          return row.field.indexOf(text)>-1
+        })
+      }
+      * */
+      customSearch: undefined,
+
+      // 设置false 为隐藏表格标题。
+      showHeader: true,
+      // 设置true 为显示摘要页脚行。
+      showFooter: false,
+      /*
+      * 页脚样式格式化程序函数，采用一个参数：
+        column: 列对象。
+        支持 classes 或 css.用法示例：
+        functionfooterStyle(column){
+          return{
+            css:{'font-weight':'normal'},
+            classes:'my-class'
+          }
+        }
+      * */
+      footerStyle: {},
+
+
+      /*-------------------- 下拉列表 --------------------*/
+      // 设置true 为显示列下拉列表。我们可以将 switchable选项设置false为隐藏下拉列表中项目。
+      showColumns: true,
+      // 设置true 为在列选项/下拉列表中显示“全部切换”复选框。
+      showColumnsToggleAll: true,
+      // 设置true 为显示对列过滤器的搜索。
+      showColumnsSearch: false,
+      // 从列下拉列表中隐藏的最小列数。
+      minimumCountColumns: 1,
+
+      /*-------------------- 部件 --------------------*/
+      // 设置true 为显示【分页开关按钮】。
+      showPaginationSwitch: true,
+      // 设置true为显示【刷新按钮】。
+      showRefresh: true,
+      // 设置true显示【切换按钮】以切换表格/卡片视图。
+      showToggle: true,
+      // 设置true显示【全屏按钮】。
+      showFullscreen: true,
+
+      // smartDisplay: true, //默认true 设置true为智能显示分页或名片视图。
+      // escape: false, //默认false 转义用于插入HTML的字符串，并替换 &, <, >, “, `, and ‘ 字符。
+      // filterOptions : { filterAlgorithm: 'and' } ,//定义算法的默认过滤器选项， filterAlgorithm: 'and' 意味着所有给定的过滤器必须匹配， filterAlgorithm: 'or' 意味着给定的过滤器之一必须匹配。
+      idField: undefined, //指明哪个字段将用作复选框/单选框值，与selectItemName对应。
+      selectItemName: 'btSelectItem', // 单选或复选框输入的名称。
+      clickToSelect: true, // 默认false 设置true 为在单击行时选择复选框或单选框。
+      /*
+      设置忽略元素clickToSelect。接受一个参数：
+      element: 元素被点击。
+      如果应忽略该单击，则返回true；如果应使该行被选择，则返回false。仅当clickToSelect为true时，此选项才相关。
+      */
+      ignoreClickToSelectOn: function () {
+        return ['A', 'BUTTON'].includes('tagName')
+      },
+      // 设置true 为允许复选框仅选择一行。
+      singleSelect: false,
+      // 设置false为隐藏标题行中的所有复选框。
+      checkboxHeader: true,
+      // maintainMetaData: false
+      //　设置　true　以启用多选行。可以使用ctrl键单击以选择一行，或使用shift键单击以选择一系列行。
+      multipleSelectRow: true,
+      // uniqueId : undefined, // 为每一行指示唯一的标识符。
+
+      /*-------------------- 视图 --------------------*/
+      //默认false 设置true 为显示名片视图表，例如移动视图。
+      cardView: false,
+      //默认false 设置true为显示详细视图表。
+      detailView: true,
+      //默认true 设置true为显示详细信息视图列（加/减图标）。
+      detailViewIcon: false,
+      //默认false 设置true单击以设置切换细节视图。
+      detailViewByClick: true,
+      // 当格式化您的详细信息视图detailView 设置为 true。返回一个String，它将被附加到详细信息视图单元格中，可以选择使用第三个参数直接渲染该元素，该参数是目标单元格的jQuery元素。
+      detailFormatter: function (index, row, element) {
+        return ''
+      },
+      // 当启用每行扩展detailView 设置到 true。返回true，将启用该行进行扩展，返回false，并且将禁用该行的扩展。默认函数返回true以启用所有行的扩展。
+      detailFilter: function (index, row) {
+        if (row.name == 'Item 1') {
+          return false;
+        }
+
+        return true
+      },
+
+      /*-------------------- 工具栏 --------------------*/
+      // jQuery选择指示工具栏，例如： #toolbar, .toolbar，或DOM节点。
+      toolbar: undefined,
+      // 指示如何对齐自定义工具栏。'left', 'right'可以使用。
+      toolbarAlign: 'left',
+      // jQuery选择，指示自定义按钮工具栏，例如：#buttons-toolbar, .buttons-toolbar，或DOM节点。
+      buttonsToolbar: undefined,
+      // 指示如何对齐工具栏按钮。 'left', 'right'可以使用。
+      buttonsAlign: 'right',
+      // 指示如何自定义工具栏按钮的顺序。
+      buttonsOrder: ['paginationSwitch', 'refresh', 'toggle', 'fullscreen', 'columns'],
+      // 定义表格按钮的前缀。
+      buttonsPrefix: 'btn',
+      //默认'secondary' 定义'btn-'表格按钮的类（在后面添加）。
+      buttonsClass: 'secondary',
+      // 定义在工具栏，分页和详细信息视图中使用的图标。
+      // icons: {
+        // paginationSwitchDown: 'fa-caret-square-down',
+        // paginationSwitchUp: 'fa-caret-square-up',
+        // refresh: 'fa-sync',
+        // toggleOff: 'fa-toggle-off',
+        // toggleOn: 'fa-toggle-on',
+        // columns: 'fa-th-list',
+        // fullscreen: 'fa-arrows-alt',
+        // detailOpen: 'fa-plus',
+        // detailClose: 'fa-minus'
+      // },
+      // 定义表格的html。
+      // 代码太多，请签出index.js
+      // 定义图标的大小， undefined, 'lg', 'sm' 都可以使用。
+      iconSize: undefined,
+      // 定义图标集名称（'glyphicon' 或 'fa'）。默认情况下'fa'用于Bootstrap v4。
+      iconsPrefix: 'fa'
+    })
+  })
+
+</script>
+</body>
+</html>
